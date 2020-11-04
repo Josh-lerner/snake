@@ -8,14 +8,12 @@ const connect = function() {
 
   conn.on('connect', () => console.log('Successfully connected to game server'));  
   conn.on('connect', () => conn.write('Name: JEL'));
+  
+  //  conn.on('connect', () => conn.write("Move: up"))
+  conn.on('data', (data) => console.log('Server says: ', data));  // handler for data
 
-conn.on('connect', () => conn.write("Move: up"))
 
-  conn.on('data', (data) => {
-    console.log('Server says: ', data);  // handler for data
-
-  });
   return conn;
 }
 
-module.exports = connect;
+module.exports = {connect};
