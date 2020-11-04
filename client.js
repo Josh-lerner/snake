@@ -5,8 +5,12 @@ const connect = function() {
     port: 50541
   });
   conn.setEncoding('utf8'); 
-  conn.on('close', () => console.log('GAMEOVER')); // close message
-  
+
+  conn.on('connect', () => console.log('Successfully connected to game server'));  
+  conn.on('connect', () => conn.write('Name: JEL'));
+
+conn.on('connect', () => conn.write("Move: up"))
+
   conn.on('data', (data) => {
     console.log('Server says: ', data);  // handler for data
 
